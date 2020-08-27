@@ -26,14 +26,11 @@ fi
 
 chown -R ${PUID:-1000}:{$PGID:-1000} "/config"
 
-if [ ! -z $TZ ]; then
-    echo "${TZ}" > /etc/timezone
-fi
-
 if [ ! -z $WEBUI_PASSWD ]; then
     su-exec $PUID:$PGID /config/flexget -c "config/config.yml" web passwd $WEBUI_PASSWD
 fi
 
+echo "${TZ:-UTC}" > /etc/timezone
 LOGFILE="--logfile ${LOG_FILE:-/config/flexget.log}"
 LOGLEVEL="--loglevel ${LOG_LEVEL:-info}"
 
