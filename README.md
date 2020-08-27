@@ -8,9 +8,9 @@ docker
 ```
 docker create \
   --name=flexget \
-  -e PUID=<UID> \
-  -e PGID=<GID> \
-  -e TZ=<TIMEZONE> \
+  -e PUID=<1000> \
+  -e PGID=<1000> \
+  -e TZ=<UTC> \
   -e WEBUI_PASSWD=<OPTIONAL> \
   -e LOG_LEVEL=<OPTIONAL> \
   -e LOG_FILE=<OPTIONAL> \
@@ -30,9 +30,9 @@ services:
     image: winterau/flexget
     container_name: flexget
     environment:
-      - PUID=<UID>
-      - PGID=<GID>
-      - TZ=<TIMEZONE>
+      - PUID=<1000>
+      - PGID=<1000>
+      - TZ=<UTC>
       - WEBUI_PASSWD=<OPTIONAL>
       - LOG_LEVEL=<OPTIONAL> 
       - LOG_FILE=<OPTIONAL> 
@@ -48,9 +48,9 @@ services:
 
 | Parameter | Use |
 | :----: | --- |
-| `-e PUID=<UID>` | Sets the User ID for Flexget |
-| `-e PGID=<GID>` | Sets the Group ID for Flexget |
-| `-e TZ=<TIMEZONE>` | Sets the Timezone |
+| `-e PUID=<1000>` | Sets the User ID for Flexget. Default: 1000 |
+| `-e PGID=<1000>` | Sets the Group ID for Flexget. Default: 1000 |
+| `-e TZ=<UTC>` | Sets the Timezone. Default: UTC |
 | `-e WEBUI_PASSWD=<OPTIONAL>` | Sets the web passwd for Flexget. |
 | `-e LOG_LEVEL=<OPTIONAL>` | Sets the Flexget logging level. Default: info |
 | `-e LOG_FILE=<OPTIONAL>` | Sets the Flexget log file. Default: flexget.log |
